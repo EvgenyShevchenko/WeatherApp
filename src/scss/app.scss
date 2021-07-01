@@ -1,0 +1,25 @@
+@import 'libs/normalize';
+@import 'components/all';
+
+body {
+  background-color: #F2F2F2;
+}
+
+.wrapper {
+  max-width: 1280px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 36px;
+  padding-bottom: 70px;
+  margin: 0 auto;
+}
+
+.title {
+  margin: 0 auto 45px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 49px;
+  text-align: center;
+  collor: black;
+}

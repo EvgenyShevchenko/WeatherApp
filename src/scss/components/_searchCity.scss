@@ -1,0 +1,31 @@
+.search-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.search-label {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 5%;
+}
+
+.search-input {
+  width: 450px;
+  height: 50px;
+  border: 1px solid #D8D8D8;
+  box-sizing: border-box;
+  border-radius: 25px;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+@media (max-width: 576px) {
+  .search-input {
+    width: 250px;
+  }
+  .search-wrapper {
+    margin: 0 0 20px 20px;
+  }
+}
