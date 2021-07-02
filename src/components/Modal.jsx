@@ -4,10 +4,9 @@ function Modal({weather, city, active, setActive}) {
 
     const addFavorite = () => {
         const cashedData = localStorage.getItem('favorite')
-        localStorage.setItem("favorite", cashedData?cashedData + ' ' + city:city)
+        localStorage.setItem("favorite", cashedData ? cashedData + ' ' + city : city)
 
     }
-
 
 
     useEffect(() => {

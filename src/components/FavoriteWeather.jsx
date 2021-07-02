@@ -14,16 +14,18 @@ function FavoriteWeather({favoriteCity, apiKey}) {
 
     }, [])
 
+    console.log(favoriteCity)
 
     return (
         <div className="favoriteWeather">
             <div className="favoriteWeather__content">
-                {favoriteCity.map(city =>
-                    <FavoriteCard resFavorite={resFavorite}/>
+                {favoriteCity.map((city, i) =>
+                    <FavoriteCard key={i + city} resFavorite={resFavorite} city={favoriteCity}/>
                 )}
             </div>
         </div>
     )
+
 }
 
 export default FavoriteWeather;

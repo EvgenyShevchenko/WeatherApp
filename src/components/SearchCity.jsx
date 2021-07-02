@@ -28,7 +28,6 @@ function SearchCity() {
             e.stopPropagation();
         }
     }
-
     return (
         <div className="search-wrapper">
             <span className="search-label">
