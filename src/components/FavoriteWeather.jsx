@@ -11,17 +11,16 @@ function FavoriteWeather({favoriteCity, apiKey}) {
             .map(city => axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`)
                 .then(({data}) => setResFavorite(data.main))
             )
-
     }, [])
 
-    console.log(favoriteCity)
+    console.log(resFavorite)
 
     return (
         <div className="favoriteWeather">
             <div className="favoriteWeather__content">
-                {favoriteCity.map((city, i) =>
-                    <FavoriteCard key={i + city} resFavorite={resFavorite} city={favoriteCity}/>
-                )}
+                {resFavorite ? resFavorite.map((data, i) =>
+                    <FavoriteCard key={i + data} city={favoriteCity} {...data}/>
+                ) : resFavorite}
             </div>
         </div>
     )

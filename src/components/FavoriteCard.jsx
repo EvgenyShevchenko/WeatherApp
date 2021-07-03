@@ -1,9 +1,9 @@
-function FavoriteCard({resFavorite, city}) {
+function FavoriteCard({temp}) {
 
 
     return (
         <div className="favoriteCard">
-            <h3 className="favoriteCard__title">{city}</h3>
+            <h3 className="favoriteCard__title">1</h3>
         </div>
     )
 }

@@ -13,7 +13,7 @@ function SearchCity() {
     const apiKey = "432e0e516b136001af816e0e90e80ca2"
 
     const favoriteCities = localStorage.getItem('favorite')
-    const citiesArr = favoriteCities.split(' ')
+    const citiesArr = favoriteCities ? favoriteCities.split(' '):favoriteCities
 
 
     useEffect(() => {

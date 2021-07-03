@@ -8,7 +8,6 @@ function Modal({weather, city, active, setActive}) {
 
     }
 
-
     useEffect(() => {
 
         const handleKeyPress = (e) => {
