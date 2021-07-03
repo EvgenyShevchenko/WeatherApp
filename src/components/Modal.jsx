@@ -3,9 +3,10 @@ import React, {useState, useEffect} from "react";
 function Modal({weather, city, active, setActive}) {
 
     const addFavorite = () => {
-        const cashedData = localStorage.getItem('favorite')
-        localStorage.setItem("favorite", cashedData ? cashedData + ' ' + city : city)
-
+        const cashedData = localStorage.getItem('favorite') || ''
+        if(!cashedData.includes(city)) {
+            localStorage.setItem("favorite",  cashedData + ' ' + city)
+        }
     }
 
     useEffect(() => {

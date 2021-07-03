@@ -13,12 +13,13 @@ function SearchCity() {
     const apiKey = "432e0e516b136001af816e0e90e80ca2"
 
     const favoriteCities = localStorage.getItem('favorite')
-    const citiesArr = favoriteCities ? favoriteCities.split(' '):favoriteCities
+    const citiesArr = favoriteCities ? favoriteCities.slice(1).split(' ') : favoriteCities
 
 
     useEffect(() => {
         setFavoriteCity(citiesArr)
     }, [])
+
 
     const searchWeather = e => {
         if (e.key === 'Enter') {
@@ -42,7 +43,7 @@ function SearchCity() {
                 setActive={setModalActive}
                 city={city}
             />
-            <FavoriteWeather favoriteCity={favoriteCity} apiKey={apiKey}/>
+            <FavoriteWeather favoriteCity={favoriteCity} apiKey={apiKey} city={city}/>
         </div>
     )
 }
