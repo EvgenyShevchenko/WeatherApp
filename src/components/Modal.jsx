@@ -41,7 +41,7 @@ function Modal({weather, city, active, setActive}) {
                         <div className="modal__content-temp"><p>Температура</p>{temp}&#8451;</div>
                         <div className="modal__content-feels"><p>Ощущается как</p>{feels_like}&#8451;</div>
                         <div className="modal__content-humidity"><p>Влажность</p>{humidity}%</div>
-                        <div className="modal__content-temp"><p>Давление</p>{pressure}</div>
+                        <div className="modal__content-pressure"><p>Давление</p>{pressure}</div>
                     </div>
                     <div className="modal__add" onClick={() => addFavorite()}>Добавить в избранное</div>
                 </div>

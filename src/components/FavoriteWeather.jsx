@@ -9,26 +9,26 @@ function FavoriteWeather({favoriteCity, apiKey, city}) {
     useEffect(() => {
         if (favoriteCity) {
             let request = favoriteCity
-                .map(city => fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`)
+                .map(city => axios(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`)
                 )
             Promise.all(request)
                 .then((responses) => {
-                    return responses
+                    setResFavorite(responses)
                 })
-                .then(responses => Promise.all(responses.map(r => r.json())))
-                .then(weatherFavorite => setResFavorite(weatherFavorite))
+                .catch(res => alert('ошибка запроса введите данные в формате EN:"London"'))
         }
     }, [favoriteCity])
 
+    console.log(resFavorite)
     return (
         <div className="favoriteWeather">
             {resFavorite
-                ? resFavorite.map((data, i) => {
+                ? resFavorite.map((obj, i) => {
                         return (
-                            <FavoriteCard key={i + data}
-                                          city={favoriteCity}
-                                          data={data.main}
-                                          cityName={city}
+                            <FavoriteCard key={i + obj.data}
+
+                                          data={obj.data.main}
+                                          cityName={obj.data.name}
                             />
                         )
                     }
