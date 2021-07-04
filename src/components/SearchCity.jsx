@@ -26,9 +26,10 @@ function SearchCity() {
             axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`)
                 .then(({data}) => setWeather(data.main))
             setModalActive(true)
-            e.stopPropagation();
+            e.target.blur()
         }
     }
+
     return (
         <div className="search-wrapper">
             <span className="search-label">
@@ -36,7 +37,8 @@ function SearchCity() {
             </span>
             <input type="text" className="search-input" value={city}
                    onChange={(e) => setCity(e.target.value)}
-                   onKeyPress={searchWeather}/>
+                   onKeyPress={searchWeather}
+            placeholder='Enter the city. Example: London'/>
             <Modal
                 weather={weather}
                 active={modalActive}
