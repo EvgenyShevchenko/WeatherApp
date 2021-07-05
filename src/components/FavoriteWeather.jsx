@@ -26,7 +26,6 @@ function FavoriteWeather({favoriteCity, apiKey, city}) {
                 ? resFavorite.map((obj, i) => {
                         return (
                             <FavoriteCard key={i + obj.data}
-
                                           data={obj.data.main}
                                           cityName={obj.data.name}
                             />

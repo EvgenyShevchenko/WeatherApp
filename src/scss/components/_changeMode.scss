@@ -3,3 +3,10 @@
   top: -129px;
   right: -263px;
 }
+
+@media (max-width: 600px) {
+  .changeMode {
+
+    position: static;
+  }
+}

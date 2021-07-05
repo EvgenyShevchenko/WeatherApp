@@ -1,8 +1,9 @@
-import React, {useState, useEffect} from "react";
+import  {useState, useEffect} from "react";
 import axios from "axios";
 import Modal from "./Modal";
 import FavoriteWeather from "./FavoriteWeather";
 import ChangeMode from "./ChangeMode";
+import SavedCity from "./SavedCity";
 
 function SearchCity() {
 
@@ -11,7 +12,6 @@ function SearchCity() {
     const [modalActive, setModalActive] = useState(false)
     const [favoriteCity, setFavoriteCity] = useState([])
     const [changeMode,setChangeMode] = useState(true)
-    const savedCity = require('./savedcity.json')
     const apiKey = "432e0e516b136001af816e0e90e80ca2"
 
     const favoriteCities = localStorage.getItem('favorite')
@@ -54,7 +54,7 @@ function SearchCity() {
                 setActive={setModalActive}
                 city={city}
             />
-            {changeMode? <FavoriteWeather favoriteCity={favoriteCity} apiKey={apiKey} city={city}/>: null}
+            {changeMode? <FavoriteWeather favoriteCity={favoriteCity} apiKey={apiKey} city={city}/>: <SavedCity apiKey={apiKey} />}
         </div>
     )
 }
