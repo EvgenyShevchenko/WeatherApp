@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import axios from "axios";
 import Modal from "./Modal";
 import FavoriteWeather from "./FavoriteWeather";
+import ChangeMode from "./ChangeMode";
 
 function SearchCity() {
 
@@ -9,7 +10,8 @@ function SearchCity() {
     const [weather, setWeather] = useState({})
     const [modalActive, setModalActive] = useState(false)
     const [favoriteCity, setFavoriteCity] = useState([])
-
+    const [changeMode,setChangeMode] = useState(true)
+    const savedCity = require('./savedcity.json')
     const apiKey = "432e0e516b136001af816e0e90e80ca2"
 
     const favoriteCities = localStorage.getItem('favorite')
@@ -30,22 +32,29 @@ function SearchCity() {
         }
     }
 
+    const toggleChangeMode = () => {
+        setChangeMode(!changeMode);
+    };
+
+    console.log(changeMode)
     return (
         <div className="search-wrapper">
             <span className="search-label">
                Search City
             </span>
-            <input type="text" className="search-input" value={city}
+            <ChangeMode changeMode={setChangeMode} toggleChangeMode={toggleChangeMode} />
+            <input type="text" className="search-input"
+                   value={city}
                    onChange={(e) => setCity(e.target.value)}
                    onKeyPress={searchWeather}
-            placeholder='Enter the city. Example: London'/>
+                   placeholder='Enter the city. Example: London'/>
             <Modal
                 weather={weather}
                 active={modalActive}
                 setActive={setModalActive}
                 city={city}
             />
-            <FavoriteWeather favoriteCity={favoriteCity} apiKey={apiKey} city={city}/>
+            {changeMode? <FavoriteWeather favoriteCity={favoriteCity} apiKey={apiKey} city={city}/>: null}
         </div>
     )
 }
