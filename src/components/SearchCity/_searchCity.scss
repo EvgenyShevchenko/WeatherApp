@@ -1,4 +1,5 @@
 .search-wrapper {
+  padding: 15px;
   max-width: 1280px;
   display: flex;
   justify-content: center;
@@ -29,7 +30,5 @@
   .search-input {
     width: 250px;
   }
-  .search-wrapper {
-    margin: 0 0 20px 20px;
-  }
+
 }

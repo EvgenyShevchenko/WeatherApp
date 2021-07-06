@@ -1,10 +1,10 @@
-import FavoriteCard from "./FavoriteCard";
+import FavoriteCard from "../FavoriteCard/FavoriteCard";
 import axios from "axios";
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 
 function SavedCity ({apiKey}) {
 const [data,setData]= useState([])
-    const savedCity = require('./savedcities.json')
+    const savedCity = require('../savedcities.json')
 
     useEffect(()=>{
         if(savedCity){
@@ -18,9 +18,6 @@ const [data,setData]= useState([])
         }
     },[])
 
-
-
-    console.log(data)
 
     return (
         <div className="favoriteWeather">

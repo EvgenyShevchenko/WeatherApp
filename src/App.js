@@ -1,11 +1,8 @@
-import React from "react";
-import SearchCity from "./components/SearchCity";
+import SearchCity from "./components/SearchCity/SearchCity";
 import './scss/app.scss';
-import axios from "axios";
 
 
 function App() {
-
 
     return (
         <div className="wrapper">

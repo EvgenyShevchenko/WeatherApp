@@ -1,0 +1,16 @@
+.favoriteWeather {
+  max-width: 800px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.favoriteWeather__noData {
+  font-weight: bold;
+}
+
+@media (max-width: 500px) {
+  .favoriteWeather {
+    flex-direction: column;
+  }
+}

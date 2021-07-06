@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
-import FavoriteCard from "./FavoriteCard";
+import FavoriteCard from "../FavoriteCard/FavoriteCard";
 
 function FavoriteWeather({favoriteCity, apiKey, city}) {
 
@@ -19,10 +19,10 @@ function FavoriteWeather({favoriteCity, apiKey, city}) {
         }
     }, [favoriteCity])
 
-    console.log(resFavorite)
+
     return (
         <div className="favoriteWeather">
-            {resFavorite
+            {resFavorite.length !== 0
                 ? resFavorite.map((obj, i) => {
                         return (
                             <FavoriteCard key={i + obj.data}
@@ -31,7 +31,7 @@ function FavoriteWeather({favoriteCity, apiKey, city}) {
                             />
                         )
                     }
-                ) : null
+                ) : <div className="favoriteWeather__noData">Данных в избранном нет.</div>
             }
         </div>
 

@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import Switch from '@material-ui/core/Switch';
 
-function ChangeMode({changeMode,toggleChangeMode}) {
+function ChangeMode({changeMode, toggleChangeMode}) {
     const [state, setState] = useState({
         checkedA: true,
         checkedB: true,

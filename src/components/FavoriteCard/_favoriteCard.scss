@@ -1,9 +1,9 @@
 .favoriteCard {
-  width: 200px;
+  min-width: 300px;
   height: 200px;
   background-color: #00a379;
-  flex: 0 1 45%;
+  flex: 0 1 40%;
   padding: 20px;
-
   margin-bottom: 5%;
+  border-radius: 5%;
 }
