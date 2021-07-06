@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from "react";
 
-function Modal({weather, active, setActive}) {
-    const city = weather.name;
+function Modal({weather, city, active, setActive}) {
 
     const addFavorite = () => {
         const cashedData = localStorage.getItem('favorite') || ''
@@ -29,7 +28,7 @@ function Modal({weather, active, setActive}) {
         humidity: weather.humidity,
         pressure: weather.pressure
     }
-    console.log(weather)
+
     const {temp, feels_like, humidity, pressure} = weatherData;
 
     return (

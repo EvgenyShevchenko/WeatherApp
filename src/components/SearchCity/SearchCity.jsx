@@ -12,6 +12,7 @@ function SearchCity() {
     const [modalActive, setModalActive] = useState(false)
     const [favoriteCity, setFavoriteCity] = useState([])
     const [changeMode, setChangeMode] = useState(true)
+    const [cityRes, setCityRes] = useState("")
     const apiKey = "432e0e516b136001af816e0e90e80ca2"
 
     const favoriteCities = localStorage.getItem('favorite')
@@ -26,7 +27,10 @@ function SearchCity() {
     const searchWeather = e => {
         if (e.key === 'Enter') {
             axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`)
-                .then(({data}) => setWeather(data))
+                .then(({data}) => {
+                    setWeather(data.main)
+                    setCityRes(data.name)
+                })
             setModalActive(true)
             e.target.blur()
         }
@@ -52,9 +56,9 @@ function SearchCity() {
                 weather={weather}
                 active={modalActive}
                 setActive={setModalActive}
-                city={city}
+                city={cityRes}
             />
-            {changeMode ? <FavoriteWeather favoriteCity={favoriteCity} apiKey={apiKey} city={city}/> :
+            {changeMode ? <FavoriteWeather favoriteCity={favoriteCity} apiKey={apiKey} city={cityRes}/> :
                 <SavedCity apiKey={apiKey}/>}
         </div>
     )
