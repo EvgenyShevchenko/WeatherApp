@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from "react";
 
-function Modal({weather, city, active, setActive}) {
+function Modal({weather, active, setActive}) {
+    const city = weather.name;
 
     const addFavorite = () => {
         const cashedData = localStorage.getItem('favorite') || ''
-        if(!cashedData.includes(city)) {
-            localStorage.setItem("favorite",  cashedData + ' ' + city)
+        if (!cashedData.includes(city)) {
+            localStorage.setItem("favorite", cashedData + ' ' + city)
         }
     }
 
@@ -28,7 +29,7 @@ function Modal({weather, city, active, setActive}) {
         humidity: weather.humidity,
         pressure: weather.pressure
     }
-
+    console.log(weather)
     const {temp, feels_like, humidity, pressure} = weatherData;
 
     return (

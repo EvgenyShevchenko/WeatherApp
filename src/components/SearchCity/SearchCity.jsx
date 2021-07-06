@@ -26,7 +26,7 @@ function SearchCity() {
     const searchWeather = e => {
         if (e.key === 'Enter') {
             axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`)
-                .then(({data}) => setWeather(data.main))
+                .then(({data}) => setWeather(data))
             setModalActive(true)
             e.target.blur()
         }
