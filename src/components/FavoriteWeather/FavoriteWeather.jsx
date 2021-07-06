@@ -15,7 +15,7 @@ function FavoriteWeather({favoriteCity, apiKey, city}) {
                 .then((responses) => {
                     setResFavorite(responses)
                 })
-                .catch(res => alert('ошибка запроса введите данные в формате EN:"London"'))
+                .catch(res => console.log('ошибка запроса введите данные в формате EN:"London"'))
         }
     }, [favoriteCity])
 
