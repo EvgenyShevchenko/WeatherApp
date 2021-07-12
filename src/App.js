@@ -1,7 +1,6 @@
 import SearchCity from "./components/SearchCity/SearchCity";
 import './scss/app.scss';
 
-
 function App() {
 
     return (

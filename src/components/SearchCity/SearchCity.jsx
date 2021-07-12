@@ -58,8 +58,11 @@ function SearchCity() {
                 setActive={setModalActive}
                 city={cityRes}
             />
-            {changeMode ? <FavoriteWeather favoriteCity={favoriteCity} apiKey={apiKey} city={cityRes}/> :
-                <SavedCity apiKey={apiKey}/>}
+            {changeMode ?
+                <FavoriteWeather favoriteCity={favoriteCity} apiKey={apiKey} city={cityRes}/>
+                :
+                <SavedCity apiKey={apiKey}/>
+            }
         </div>
     )
 }

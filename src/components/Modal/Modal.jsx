@@ -10,7 +10,6 @@ function Modal({weather, city, active, setActive}) {
     }
 
     useEffect(() => {
-
         const handleKeyPress = (e) => {
             if (e.keyCode === 27) {
                 setActive(false)
