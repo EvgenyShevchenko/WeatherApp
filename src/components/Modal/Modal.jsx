@@ -21,6 +21,10 @@ function Modal({weather, city, active, setActive}) {
 
     }, [])
 
+    const handlerModalClose = () => {
+        setActive(false)
+    }
+
     const weatherData = {
         temp: weather.temp,
         feels_like: weather.feels_like,
@@ -32,9 +36,9 @@ function Modal({weather, city, active, setActive}) {
 
     return (
         <div>
-            <div className={active ? "modal active" : "modal"} onClick={() => setActive(false)}>
+            <div className={active ? "modal active" : "modal"} onClick={handlerModalClose}>
                 <div className="modal__content">
-                    <div className="modal__content-close" onClick={() => setActive(false)}>x</div>
+                    <div className="modal__content-close" onClick={handlerModalClose}>x</div>
                     <h2 className="modal__title">{city}</h2>
                     <div className="modal__text">
                         <div className="modal__content-temp"><p>Температура</p>{temp}&#8451;</div>
