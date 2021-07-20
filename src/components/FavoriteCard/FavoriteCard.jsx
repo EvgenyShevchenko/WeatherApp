@@ -4,7 +4,7 @@ function FavoriteCard({data, cityName}) {
         <div className="favoriteCard">
             <h3 className="favoriteCard__title">{cityName}</h3>
             <div className="favoriteCard__temp">
-                {Math.floor(data.temp)}&#8451;
+                <b>{Math.floor(data.temp)}&#8451;</b>
             </div>
             <div className="favoriteCard__content-feels">
                 <p>Feels_like: </p><b>{Math.floor(data.feels_like)}&#8451;</b>

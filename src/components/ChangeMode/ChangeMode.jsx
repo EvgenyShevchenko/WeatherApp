@@ -12,7 +12,6 @@ function ChangeMode({changeMode, toggleChangeMode}) {
         toggleChangeMode()
     };
 
-
     return (
         <div className="changeMode">Change mode:
             <Switch

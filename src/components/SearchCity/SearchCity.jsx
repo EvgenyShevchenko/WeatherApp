@@ -1,9 +1,9 @@
 import {useState, useEffect} from "react";
-import axios from "axios";
 import Modal from "../Modal/Modal";
 import FavoriteWeather from "../FavoriteWeather/FavoriteWeather";
 import ChangeMode from "../ChangeMode/ChangeMode";
 import SavedCity from "../SavedCity/SavedCity";
+import getWeather from "../../api/weather";
 
 function SearchCity() {
 
@@ -13,24 +13,26 @@ function SearchCity() {
     const [favoriteCity, setFavoriteCity] = useState([])
     const [changeMode, setChangeMode] = useState(true)
     const [cityRes, setCityRes] = useState("")
-    const apiKey = "432e0e516b136001af816e0e90e80ca2"
-
+    const [error, setError] = useState(false)
     const favoriteCities = localStorage.getItem('favorite')
     const citiesArr = favoriteCities ? favoriteCities.slice(1).split(' ') : favoriteCities
-
 
     useEffect(() => {
         setFavoriteCity(citiesArr)
     }, [])
 
-
     const searchWeather = e => {
         if (e.key === 'Enter') {
-            axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`)
-                .then(({data}) => {
-                    setWeather(data.main)
-                    setCityRes(data.name)
-                })
+            getWeather(city)
+                .then(res => {
+                        if (res) {
+                            setWeather(res.main)
+                            setCityRes(res.name)
+                        } else {
+                            setError(true)
+                        }
+                    }
+                )
             setModalActive(true)
             e.target.blur()
         }
@@ -39,7 +41,6 @@ function SearchCity() {
     const toggleChangeMode = () => {
         setChangeMode(!changeMode);
     };
-
 
     return (
         <div className="search-wrapper">
@@ -57,11 +58,12 @@ function SearchCity() {
                 active={modalActive}
                 setActive={setModalActive}
                 city={cityRes}
+                error={error}
             />
             {changeMode ?
-                <FavoriteWeather favoriteCity={favoriteCity} apiKey={apiKey} city={cityRes}/>
+                <FavoriteWeather favoriteCity={favoriteCity} city={cityRes}/>
                 :
-                <SavedCity apiKey={apiKey}/>
+                <SavedCity/>
             }
         </div>
     )
