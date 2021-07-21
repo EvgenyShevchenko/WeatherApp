@@ -1,6 +1,6 @@
 import apiClient from "./api";
 
-const getWeather = async (city) => {
+const getWeather = async (city: string) => {
     const apiKey = "432e0e516b136001af816e0e90e80ca2"
     try {
         const response = await apiClient.get(

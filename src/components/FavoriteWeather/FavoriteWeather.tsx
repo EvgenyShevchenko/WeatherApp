@@ -2,14 +2,23 @@ import React, {useState, useEffect} from "react";
 import FavoriteCard from "../FavoriteCard/FavoriteCard";
 import getWeather from "../../api/weather";
 
-function FavoriteWeather({favoriteCity}) {
+interface FavoriteWeatherProps {
+    favoriteCity: string[]
+}
 
-    const [resFavorite, setResFavorite] = useState([]);
+type ResFavoriteState = {
+    main: any,
+    name: string
+}[]
+
+const FavoriteWeather: React.FC<FavoriteWeatherProps> = ({favoriteCity}) => {
+
+    const [resFavorite, setResFavorite] = useState<ResFavoriteState>([]);
 
     useEffect(() => {
         if (favoriteCity) {
             let request = favoriteCity
-                .map(city => getWeather(city)
+                .map((city) => getWeather(city)
                 )
             Promise.all(request)
                 .then((responses) => {

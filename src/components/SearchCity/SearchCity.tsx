@@ -5,23 +5,23 @@ import ChangeMode from "../ChangeMode/ChangeMode";
 import SavedCity from "../SavedCity/SavedCity";
 import getWeather from "../../api/weather";
 
-function SearchCity() {
+const SearchCity: React.FC = () => {
 
     const [city, setCity] = useState("")
     const [weather, setWeather] = useState({})
     const [modalActive, setModalActive] = useState(false)
-    const [favoriteCity, setFavoriteCity] = useState([])
+    const [favoriteCity, setFavoriteCity] = useState<string[] | string>([])
     const [changeMode, setChangeMode] = useState(true)
     const [cityRes, setCityRes] = useState("")
     const [error, setError] = useState(false)
     const favoriteCities = localStorage.getItem('favorite')
-    const citiesArr = favoriteCities ? favoriteCities.slice(1).split(' ') : favoriteCities
+    const citiesArr = favoriteCities ? favoriteCities.slice(1).split(' ') : ""
 
     useEffect(() => {
         setFavoriteCity(citiesArr)
     }, [])
 
-    const searchWeather = e => {
+    const searchWeather = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
             getWeather(city)
                 .then(res => {
@@ -33,8 +33,8 @@ function SearchCity() {
                         }
                     }
                 )
-            setModalActive(true)
-            e.target.blur()
+            setModalActive(true);
+            (e.target as HTMLInputElement).blur()
         }
     }
 
@@ -47,11 +47,11 @@ function SearchCity() {
             <span className="search-label">
                Search City
             </span>
-            <ChangeMode changeMode={setChangeMode} toggleChangeMode={toggleChangeMode}/>
+            <ChangeMode toggleChangeMode={toggleChangeMode}/>
             <input type="text" className="search-input"
                    value={city}
                    onChange={(e) => setCity(e.target.value)}
-                   onKeyPress={searchWeather}
+                   onKeyPress={(e) => searchWeather(e)}
                    placeholder='Enter the city. Example: London'/>
             <Modal
                 weather={weather}
@@ -61,7 +61,7 @@ function SearchCity() {
                 error={error}
             />
             {changeMode ?
-                <FavoriteWeather favoriteCity={favoriteCity} city={cityRes}/>
+                <FavoriteWeather favoriteCity={favoriteCity as string[]}/>
                 :
                 <SavedCity/>
             }

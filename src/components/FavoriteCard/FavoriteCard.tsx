@@ -1,4 +1,9 @@
-function FavoriteCard({data, cityName}) {
+interface FavoriteCardProps {
+    data: any
+    cityName: string
+}
+
+const FavoriteCard: React.FC<FavoriteCardProps> = ({data, cityName}) => {
 
     return (
         <div className="favoriteCard">

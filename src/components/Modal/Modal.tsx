@@ -1,6 +1,21 @@
 import React, {useEffect} from "react";
 
-function Modal({weather, city, active, setActive, error}) {
+interface ModalProps {
+    weather: any
+    city: string
+    active: boolean
+    setActive: (arg: boolean) => void
+    error: boolean
+}
+
+const Modal: React.FC<ModalProps> = (
+    {
+        weather,
+        city,
+        active,
+        setActive,
+        error
+    }) => {
 
     const addFavorite = () => {
         const cashedData = localStorage.getItem('favorite') || ''
@@ -10,7 +25,7 @@ function Modal({weather, city, active, setActive, error}) {
     }
 
     useEffect(() => {
-        const handleKeyPress = (e) => {
+        const handleKeyPress = (e: any) => {
             if (e.keyCode === 27) {
                 setActive(false)
             }

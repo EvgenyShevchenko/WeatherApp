@@ -1,13 +1,17 @@
 import React, {useState} from "react";
 import Switch from '@material-ui/core/Switch';
 
-function ChangeMode({changeMode, toggleChangeMode}) {
+interface ChangeModeProps {
+    toggleChangeMode: () => void
+}
+
+const ChangeMode: React.FC<ChangeModeProps> = ({toggleChangeMode}) => {
     const [state, setState] = useState({
         checkedA: true,
         checkedB: true,
     });
 
-    const handleChange = (event) => {
+    const handleChange = (event: React.ChangeEvent<any>) => {
         setState({...state, [event.target.name]: event.target.checked});
         toggleChangeMode()
     };
@@ -16,7 +20,7 @@ function ChangeMode({changeMode, toggleChangeMode}) {
         <div className="changeMode">Change mode:
             <Switch
                 checked={state.checkedA}
-                onChange={handleChange}
+                onChange={(event: React.ChangeEvent<any>) => handleChange(event)}
                 name="checkedA"
                 inputProps={{'aria-label': 'secondary checkbox'}}
             />
